@@ -5,36 +5,23 @@
       color="primary"
       dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-col>
+        <div class="text-h5">{{ titulo }}</div>
+      </v-col>
+      
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-col cols="2">
+        <v-btn text @click="goHome()">
+          Ir a Home
+        </v-btn>
+      </v-col>
+      <v-col cols="2">
+        <router-link class="color_blanco" to="/about">Ir a About</router-link>
+        <!-- <v-btn text>
+          Ir a About
+        </v-btn> -->
+      </v-col>
     </v-app-bar>
 
     <v-main>
@@ -44,12 +31,37 @@
 </template>
 
 <script>
-
+/*
 export default {
   name: 'App',
 
   data: () => ({
     //
+
   }),
-};
+};*/
+
+
+export default {
+  name: 'App',
+  data: () => {
+    return {
+      titulo: "Venta de Computadores",
+    };
+  },
+  methods: {
+    goHome(){
+      console.log('entra a goHome');
+      this.$router.push('/home');
+    },
+  }
+
+}
+
+
 </script>
+<style>
+.color_blanco {
+  color: white !important;
+}
+</style>
